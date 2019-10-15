@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace LogSearcher.Models
+{
+    public class HitFile : IFoundFile
+    {
+        private string fileName;
+
+        public string FileName
+        {
+            get { return fileName; }
+        }
+
+
+        private string filePath;
+
+        public string FilePath
+        {
+            get { return filePath; }
+
+        }
+
+        public string FilePathAndName
+        {
+
+            get { return filePath + "\\" + fileName; }
+            // Path.Combine();
+            // Directory.GetCurrentDirectory(); // not so usefull here
+        }
+
+        private bool fileIsCopied;
+
+        public bool FileIsCopied
+        {
+            get { return fileIsCopied; }
+            set { fileIsCopied = value; }
+        }
+
+        public HitFile(string fullPath)
+        {
+            // should we extract this to a method/extension?
+            if (fullPath.Length < 1) throw new Exception("path is too short");
+
+            if (!fullPath.Contains("\\")) throw new Exception("path seems illegit");
+
+            // if last char is \ remove
+            if (fullPath.EndsWith("\\")) { fullPath = fullPath.Substring(0, fullPath.Length - 1); };
+
+            int lastDelim = fullPath.LastIndexOf('\\');
+
+            fileName = fullPath.Substring(lastDelim + 1);
+            filePath = fullPath.Substring(0, lastDelim);
+
+        }
+
+
+
+    }
+}
