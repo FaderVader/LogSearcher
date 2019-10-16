@@ -13,8 +13,11 @@ namespace LogSearcher.ViewModels
     {
         public ShellViewModel()
         {
-            sourceDirectories = new BindableCollection<SourceDirectory>();
-            hitList = new BindableCollection<HitFile>();
+            SourceDirectories = new BindableCollection<SourceDirectory>();
+            HitList = new BindableCollection<HitFile>();
+
+            InputExtension = "";
+            InputSearchString = "";
         }
 
 
@@ -51,7 +54,7 @@ namespace LogSearcher.ViewModels
         #endregion
 
 
-        #region view property-bindings 
+        #region View-property bindings 
         private string inputSearchString;
         public string InputSearchString
         {
@@ -63,8 +66,8 @@ namespace LogSearcher.ViewModels
             }
         }
 
-        private string inputExtension;
 
+        private string inputExtension;
         public string InputExtension
         {
             get { return inputExtension; }
@@ -76,7 +79,6 @@ namespace LogSearcher.ViewModels
         }
 
         private string inputSourceFolder;
-
         public string InputSourceFolder
         {
             get { return inputSourceFolder; }
@@ -84,31 +86,40 @@ namespace LogSearcher.ViewModels
         }
 
         private string inputTargetFolder;
-
         public string InputTargetFolder
         {
             get { return inputTargetFolder; }
             set { inputTargetFolder = value; NotifyOfPropertyChange(() => InputTargetFolder); }
         }
+
+        private HitFile selectedFile;
+        public HitFile SelectedFile
+        {
+            get { return selectedFile; }
+            set { selectedFile = value; NotifyOfPropertyChange(() => SelectedFile); }
+        }
+
         #endregion
 
 
-        #region buttons
-        public void SubmitSearchString()
+        #region Buttons
+
+        public void FolderBrowse()
         {
-            // grab value of InputSearchString
-            var test = InputSearchString;
+            var fileHandler = new FileHandler();
+            var folder = fileHandler.BrowseForFolder();
+
+            if (Utils.ValidateDirectory(folder))
+            {
+                SourceDirectory sourceDir = new SourceDirectory(folder);
+                SourceDirectories.Add(sourceDir);
+            }
+
         }
 
-        public void SubmitExtension()
-        {
-            // grab value of InputExtension
-            var test = InputExtension;
-        }
 
         public void SubmitSourceFolder()
-        {
-            // grab value of InputSourceFolder -> SourceDirectories
+        {           
             if (Utils.ValidateDirectory(InputSourceFolder))
             {
                 SourceDirectory sourceDir = new SourceDirectory(InputSourceFolder);
@@ -116,7 +127,6 @@ namespace LogSearcher.ViewModels
 
                 InputSourceFolder = "";
             }
-
         }
 
         public void ResetSourceFolderDisplay()
@@ -133,12 +143,19 @@ namespace LogSearcher.ViewModels
 
         public void StartSearch()
         {
-            // GO GO
+            HitList.Clear();
             SearchForFiles();
+        }
+
+        public void OpenFile()
+        {
+            var fileHandler = new FileHandler();
+            fileHandler.OpenFile(SelectedFile);
         }
         #endregion
 
 
+        #region Methods
         public void SearchForFiles()
         {
             SearchProfile profile = new SearchProfile(InputSearchString, InputExtension);
@@ -153,6 +170,7 @@ namespace LogSearcher.ViewModels
 
             HitList = localHits;
         }
-     
+        #endregion
+
     }
 }

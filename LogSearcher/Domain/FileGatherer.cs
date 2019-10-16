@@ -23,7 +23,6 @@ namespace LogSearcher.Domain
 
 
         private IList<SourceDirectory> sourceDirectories;
-
         public IList<SourceDirectory> SourceDirectories
         {
             get { return sourceDirectories; }
@@ -31,22 +30,13 @@ namespace LogSearcher.Domain
         }
 
         private SearchProfile searchProfile;
-
         public SearchProfile SearchProfile
         {
             get { return searchProfile; }
             set { searchProfile = value; }
         }
 
-
-
-
-        // for each sourceDir
-        // validate path - check if folder exists (Directory.Exists() )
-        // if OK, get all files with matching ext (Path.GetFileName() )
-        // for each file, search for searchstring  (FileInfo .ReadAllText() )
-        // if searchString is matched, add file to list of HitFiles
-
+        
         public void TraverseSourceDirs()
         {
             foreach (var directory in SourceDirectories)
@@ -54,7 +44,9 @@ namespace LogSearcher.Domain
                 if (!Directory.Exists(directory.DirectoryName)) { continue; }
 
                 var pattern = $"*{SearchProfile.FileExt}";                
-                var list = Directory.GetFiles(directory.DirectoryName, pattern).ToList(); 
+                var list = Directory.GetFiles(directory.DirectoryName, pattern).ToList();
+
+                directory.FoundFileList.Clear(); // ensure list is cleared before populating
 
                 foreach (var file in list)
                 {
@@ -67,7 +59,7 @@ namespace LogSearcher.Domain
                             directory.FoundFileList.Add(file);
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         continue;
                     }

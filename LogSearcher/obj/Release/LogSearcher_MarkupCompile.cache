@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\GIT_REPOS\csharp\LogSearcherSolution\LogSearcher\obj\Debug\
+C:\GIT_REPOS\csharp\LogSearcherSolution\LogSearcher\obj\Release\
 LogSearcher
 none
 false
-DEBUG;TRACE
+TRACE
 C:\GIT_REPOS\csharp\LogSearcherSolution\LogSearcher\App.xaml
 1-250345876
 

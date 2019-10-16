@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogSearcher.Domain
 {
-    public static class FindInFile // Look for specified string in specified file, flag if found
+    public class FindInFile // Look for specified string in specified file, flag if found
     {
     }
 }
