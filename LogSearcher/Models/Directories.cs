@@ -6,9 +6,9 @@ namespace LogSearcher.Models
 {
     public class SourceDirectory: LogDirectory
     {
-        private List<string> foundFileList;
+        private List<HitFile> foundFileList;
 
-        public List<string> FoundFileList
+        public List<HitFile> FoundFileList
         {
             get { return foundFileList; }
             set { foundFileList = value; }
@@ -16,7 +16,7 @@ namespace LogSearcher.Models
 
         public SourceDirectory(string path) : base(path)
         {
-            foundFileList = new List<string>();
+            foundFileList = new List<HitFile>();
         }
 
     }

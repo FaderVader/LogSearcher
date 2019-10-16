@@ -48,23 +48,9 @@ namespace LogSearcher.Domain
 
                 directory.FoundFileList.Clear(); // ensure list is cleared before populating
 
-                foreach (var file in list)
-                {
-                    try
-                    {
-                        var fileContent = File.ReadAllText(file);
-
-                        if (fileContent.Contains(searchProfile.SearchString))
-                        {
-                            directory.FoundFileList.Add(file);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-                }
-
+                FindInFile findFile = new FindInFile(searchProfile);
+                findFile.SearchInList(list);          
+                directory.FoundFileList = findFile.HitList;
             }
         }
 
@@ -74,7 +60,7 @@ namespace LogSearcher.Domain
 
             foreach (var dir in SourceDirectories)
             {
-                dir.FoundFileList.ForEach(foundFile => foundFiles.Add(new HitFile(foundFile)));
+                dir.FoundFileList.ForEach(foundFile => foundFiles.Add(foundFile));
             }
 
             return foundFiles;
