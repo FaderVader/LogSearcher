@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static LogSearcher.Domain.Utils;
 
 namespace LogSearcher.Models
 {
@@ -27,8 +28,6 @@ namespace LogSearcher.Models
         {
 
             get { return filePath + "\\" + fileName; }
-            // Path.Combine();
-            // Directory.GetCurrentDirectory(); // not so usefull here
         }
 
         private bool fileIsCopied;
@@ -38,6 +37,15 @@ namespace LogSearcher.Models
             get { return fileIsCopied; }
             set { fileIsCopied = value; }
         }
+
+        private TextPosition searchPosition;
+
+        public TextPosition SearchPosition
+        {
+            get { return searchPosition; }
+            set { searchPosition = value; }
+        }
+
 
         public HitFile(string fullPath)
         {

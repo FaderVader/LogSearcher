@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using LogSearcher.Domain;
 using LogSearcher.Models;
+using static LogSearcher.Domain.Utils;
 
 namespace LogSearcher.ViewModels
 {
@@ -19,6 +20,12 @@ namespace LogSearcher.ViewModels
             InputExtension = "";
             InputSearchString = "";
         }
+
+        /* 
+         Toggle for open file with Notepad++ via UI-checkbox: Use NPP
+         Create two classes : 1 for just open default, 1 for invoking npp with args
+         button-click-handler invokes same method, but we decide which delegate to use based on UI-checkbox
+             */
 
 
         #region Main lists
@@ -96,8 +103,16 @@ namespace LogSearcher.ViewModels
         public HitFile SelectedFile
         {
             get { return selectedFile; }
-            set { selectedFile = value; NotifyOfPropertyChange(() => SelectedFile); }
+            set { selectedFile = value; NotifyOfPropertyChange(() => SelectedFile); FileContent = SelectedFile?.SearchPosition.Text; }
         }
+
+        private string fileContent;
+        public string FileContent
+        {
+            get { return fileContent; }
+            set { fileContent = value; NotifyOfPropertyChange(() => FileContent); }
+        }
+
 
         #endregion
 

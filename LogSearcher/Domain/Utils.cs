@@ -24,5 +24,12 @@ namespace LogSearcher.Domain
             if (DirInfo.Exists == false) return null; 
             return DirInfo;
         }
+
+        public class TextPosition
+        {
+            public int Line;
+            public int Column;
+            public string Text = "";
+        }
     }
 }

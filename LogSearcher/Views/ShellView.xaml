@@ -141,6 +141,9 @@
                   DisplayMemberPath="FileName"                                  
                   SelectedItem="{Binding Path=SelectedFile, Mode=TwoWay}"
                   />
+        <TextBox x:Name="FileContent" Grid.Row="7" Grid.Column="7"
+                 Grid.ColumnSpan="2"                 
+                 Margin="0 0 10 0"></TextBox>
         <!--  SelectionChanged="DisplayFoundFiles_SelectionChanged"   -->
         <!-- ItemsSource="{Binding HitList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" -->
     </Grid>
