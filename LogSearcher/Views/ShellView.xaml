@@ -135,14 +135,15 @@
                   Grid.ColumnSpan="2"
                   VerticalAlignment="Top"
                   MinHeight="230"
-                  MaxHeight="250"
+                  MaxHeight="230"
                   Margin="0 0 10 0"                  
                   
                   DisplayMemberPath="FileName"                                  
                   SelectedItem="{Binding Path=SelectedFile, Mode=TwoWay}"
                   />
         <TextBox x:Name="FileContent" Grid.Row="7" Grid.Column="7"
-                 Grid.ColumnSpan="2"                 
+                 Grid.ColumnSpan="2"   
+                 TextWrapping="NoWrap"
                  Margin="0 0 10 0"></TextBox>
         <!--  SelectionChanged="DisplayFoundFiles_SelectionChanged"   -->
         <!-- ItemsSource="{Binding HitList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" -->

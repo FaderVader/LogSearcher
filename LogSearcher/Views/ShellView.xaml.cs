@@ -29,5 +29,10 @@ namespace LogSearcher.Views
         {
 
         }
+
+        private void StartSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
