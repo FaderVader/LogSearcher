@@ -165,6 +165,13 @@ namespace LogSearcher.ViewModels
         public void OpenFile()
         {
             var fileHandler = new FileHandler();
+
+            var useNPP = Properties.Settings.Default.UseNPP;
+            if (useNPP)
+            {
+                fileHandler.SendToNotePadPP(SelectedFile);
+                return;
+            }
             fileHandler.OpenFile(SelectedFile);
         }
         #endregion

@@ -33,5 +33,18 @@ namespace LogSearcher.Domain
             }
             return selectedFolder;
         }
+
+        public void SendToNotePadPP(HitFile hitfile)
+        {
+            if (hitfile == null) return;
+
+            var notePadPath = Properties.Settings.Default.NotePadPP_Path;
+            var notePadExe = Properties.Settings.Default.NotePadPP_Exe;
+            string npp = $"{notePadPath}\\{notePadExe}";
+            string args = $"-n{hitfile?.SearchPosition.Line} -c{hitfile?.SearchPosition.Column} {hitfile?.FilePathAndName}";
+
+            System.Diagnostics.Process.Start(npp, args);
+
+        }
     }
 }
