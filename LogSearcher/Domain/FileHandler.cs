@@ -1,11 +1,7 @@
 ﻿using LogSearcher.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LogSearcher.Domain
@@ -38,12 +34,20 @@ namespace LogSearcher.Domain
         {
             if (hitfile == null) return;
 
-            var notePadPath = Properties.Settings.Default.NotePadPP_Path;
-            var notePadExe = Properties.Settings.Default.NotePadPP_Exe;
-            string npp = $"{notePadPath}\\{notePadExe}";
-            string args = $"-n{hitfile?.SearchPosition.Line} -c{hitfile?.SearchPosition.Column} {hitfile?.FilePathAndName}";
+            try
+            {
+                var notePadPath = Properties.Settings.Default.NotePadPP_Path;
+                var notePadExe = Properties.Settings.Default.NotePadPP_Exe;
+                string npp = $"{notePadPath}\\{notePadExe}";
+                string args = $"-n{hitfile?.SearchPosition.Line} -c{hitfile?.SearchPosition.Column} {hitfile?.FilePathAndName}";
 
-            System.Diagnostics.Process.Start(npp, args);
+                Process.Start(npp, args);
+            }
+            catch (Exception)
+            {
+                // do nothing - just ignore and return
+                return;
+            }
 
         }
     }

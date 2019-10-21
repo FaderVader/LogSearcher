@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="NotePadPP_Path" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Program Files (x86)\Notepad++</Value>
+      <Value Profile="(Default)">C:\Program Files\Notepad++</Value>
     </Setting>
     <Setting Name="NotePadPP_Exe" Type="System.String" Scope="Application">
       <Value Profile="(Default)">notepad++</Value>

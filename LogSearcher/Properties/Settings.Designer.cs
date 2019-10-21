@@ -25,7 +25,7 @@ namespace LogSearcher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Notepad++")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\Notepad++")]
         public string NotePadPP_Path {
             get {
                 return ((string)(this["NotePadPP_Path"]));
