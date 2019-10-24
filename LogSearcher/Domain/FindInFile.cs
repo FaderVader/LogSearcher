@@ -45,15 +45,6 @@ namespace LogSearcher.Domain
                             HitList.Add(hit);
                         }
                     }
-                    //var fileContent = File.ReadAllText(file);
-
-                    //if (fileContent.Contains(searchProfile.SearchString))
-                    //{
-                    //    // also locate the line and col of first occurence?                       
-                    //    var hit = new HitFile(file);
-                    //    hit.SearchPosition = FindLine(fileContent);
-                    //    HitList.Add(hit);
-                    //}
                 }
                 catch (Exception e)
                 {

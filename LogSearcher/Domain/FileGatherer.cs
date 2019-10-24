@@ -15,10 +15,6 @@ namespace LogSearcher.Domain
         {
             this.sourceDirectories = sourceDirectories;
             this.searchProfile = search;
-
-            //TraverseSourceDirs();
-
-            var test = sourceDirectories;
         }
 
 
@@ -43,8 +39,8 @@ namespace LogSearcher.Domain
             {
                 if (!Directory.Exists(directory.DirectoryName)) { continue; }
 
-                var pattern = $"*{SearchProfile.FileExt}";                
-                var list = Directory.GetFiles(directory.DirectoryName, pattern).ToList();
+                var pattern = $"{SearchProfile.FileExt}";                
+                var list = await GetFiles(directory.DirectoryName, pattern);
 
                 directory.FoundFileList.Clear(); // ensure list is cleared before populating
 
@@ -64,6 +60,20 @@ namespace LogSearcher.Domain
             }
 
             return foundFiles;
+        }
+
+        private async Task<List<string>> GetFiles(string directory, string searchPattern)
+        {
+            List<string> list = new List<string>();
+            try
+            {
+                list = Directory.GetFiles(directory, searchPattern).ToList();
+            }
+            catch (Exception)
+            {
+             // just ignore error
+            }
+            return list;
         }
 
     }

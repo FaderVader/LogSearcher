@@ -20,7 +20,7 @@ namespace LogSearcher.ViewModels
             InputExtension = "";
             InputSearchString = "";
 
-            GoSearch = new RelayCommand(SearchForFiles);
+            GoSearch = new RelayCommand(StartSearch);
         }
 
         /* 
@@ -160,10 +160,10 @@ namespace LogSearcher.ViewModels
             var test = InputTargetFolder;
         }
 
-        public void StartSearch()
+        public async void StartSearch()
         {
             HitList.Clear();
-            SearchForFiles();
+            await SearchForFiles();
         }
 
         public void OpenFile()
@@ -180,7 +180,7 @@ namespace LogSearcher.ViewModels
 
 
         #region Methods
-        public async void SearchForFiles()
+        public async Task SearchForFiles()
         {
             SearchProfile profile = new SearchProfile(InputSearchString, InputExtension);
             FileGatherer gatherer = new FileGatherer(SourceDirectories, profile);
