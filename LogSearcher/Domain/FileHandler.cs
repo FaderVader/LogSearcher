@@ -6,16 +6,16 @@ using System.Windows.Forms;
 
 namespace LogSearcher.Domain
 {
-    public class FileHandler  // Copy the specified files to the specified location
+    public static class FileHandler  // Copy the specified files to the specified location
     {
-        public void OpenFile(HitFile file)
+        public static void OpenWithFile(HitFile file)
         {
             if (!File.Exists(file?.FilePathAndName)) return;
 
             Process.Start(file.FilePathAndName);
         }
 
-        public string BrowseForFolder()
+        public static string BrowseForFolder()
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
@@ -30,7 +30,7 @@ namespace LogSearcher.Domain
             return selectedFolder;
         }
 
-        public void SendToNotePadPP(HitFile hitfile)
+        public static void SendToNotePadPP(HitFile hitfile)
         {
             if (hitfile == null) return;
 

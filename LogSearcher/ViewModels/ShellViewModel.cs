@@ -121,8 +121,7 @@ namespace LogSearcher.ViewModels
 
         public void FolderBrowse()
         {
-            var fileHandler = new FileHandler();
-            var folder = fileHandler.BrowseForFolder();
+            var folder = FileHandler.BrowseForFolder();
 
             if (Utils.ValidateDirectory(folder))
             {
@@ -153,6 +152,7 @@ namespace LogSearcher.ViewModels
         public void SubmitTargetFolder()
         {
             // grab value of TargetDirectory
+            // Not currently implemented
             var test = InputTargetFolder;
         }
 
@@ -164,15 +164,13 @@ namespace LogSearcher.ViewModels
 
         public void OpenFile()
         {
-            var fileHandler = new FileHandler();
-
             var useNPP = Properties.Settings.Default.UseNPP;
             if (useNPP)
             {
-                fileHandler.SendToNotePadPP(SelectedFile);
+                FileHandler.SendToNotePadPP(SelectedFile);
                 return;
             }
-            fileHandler.OpenFile(SelectedFile);
+            FileHandler.OpenWithFile(SelectedFile);
         }
         #endregion
 

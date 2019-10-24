@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LogSearcher.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1000" FontSize="12"
+      d:DesignHeight="350" d:DesignWidth="800" FontSize="12"
       Background="Gray"
-      WindowTitle="LogSearcher"      
-      Height="350" Width="800">
+      WindowTitle="LogSearcher"  
+      >
 
 
     <Grid>
@@ -19,8 +19,8 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -68,7 +68,9 @@
         <Button x:Name="FolderBrowse"
                 Grid.Column="5" Grid.Row="3"
                 Margin="5 0 10 0"
-                >...</Button>
+                MinWidth="20"
+                HorizontalAlignment="Left"
+                > ... </Button>
         <Button x:Name="SubmitSourceFolder" 
                 Grid.Row="4" 
                 Grid.Column="4"
@@ -99,16 +101,19 @@
                 >Reset</Button>
 
         <!-- Row 7 -->
-        <TextBlock Grid.Row="7" Grid.Column="1">Target folder:</TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="1"
+                   Margin="0 10 0 0"
+                   >Target folder:</TextBlock>
         <TextBox x:Name="InputTargetFolder" 
                  Grid.Row="7" 
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
+                 Margin="0 10 0 0"
                  IsEnabled="False"></TextBox>
         <Button x:Name="SubmitTargetFolder" 
                 Grid.Row="7" Grid.Column="5"
                 IsEnabled="False"
-                Margin="5 0 10 0">Set</Button>
+                Margin="5 10 10 0">Set</Button>
 
         <!-- Row 9 -->
         <Button x:Name="StartSearch" 
@@ -121,30 +126,30 @@
         <Button x:Name="OpenFile" 
                 Margin="0 20 10 20 "
                 MaxWidth="70"
-                HorizontalAlignment="Right"
-                Grid.Column="8" 
+                HorizontalAlignment="Left"
+                Grid.Column="6" 
                 Grid.Row="9">Open File</Button>
 
         <!-- Found files-->
         <TextBlock Grid.Row="1" 
-                   Grid.Column="7">Found Files:</TextBlock>
+                   Grid.Column="6">Found Files:</TextBlock>
         <ListView x:Name="HitList"
                   Grid.Row="2" 
-                  Grid.Column="7"
+                  Grid.Column="6"
                   Grid.RowSpan="6" 
-                  Grid.ColumnSpan="2"
+                  Grid.ColumnSpan="3"
+                  Margin="0 0 10 0"
                   VerticalAlignment="Top"
-                  MinHeight="230"
+                  MinWidth="180"
                   MaxHeight="230"
-                  Margin="0 0 10 0"                  
+                  MinHeight="200"
                   
                   DisplayMemberPath="FileName"                                  
                   SelectedItem="{Binding Path=SelectedFile, Mode=TwoWay}"
                   />
-        <TextBox x:Name="FileContent" Grid.Row="7" Grid.Column="7"
-                 Grid.ColumnSpan="2"   
-                 TextWrapping="NoWrap"
-                 Margin="0 0 10 0"></TextBox>
+        <TextBox x:Name="FileContent" Grid.Row="7" Grid.Column="6"
+                 Grid.ColumnSpan="2"                    
+                 Margin="0 10 10 0"></TextBox>
         <!--  SelectionChanged="DisplayFoundFiles_SelectionChanged"   -->
         <!-- ItemsSource="{Binding HitList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" -->
     </Grid>
