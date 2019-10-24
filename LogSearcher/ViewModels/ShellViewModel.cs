@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using LogSearcher.Domain;
 using LogSearcher.Models;
+using System.Threading.Tasks;
 using static LogSearcher.Domain.Utils;
 
 namespace LogSearcher.ViewModels
