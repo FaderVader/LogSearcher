@@ -134,8 +134,10 @@
                 Grid.Row="9">Open File</Button>
 
         <!-- Found files-->
+        <!--Found Files:-->
         <TextBlock Grid.Row="1" 
-                   Grid.Column="6">Found Files:</TextBlock>
+                   Grid.Column="6"
+                   Text="{Binding SearchStatus}"></TextBlock>
         <ListView x:Name="HitList"
                   Grid.Row="2" 
                   Grid.Column="6"

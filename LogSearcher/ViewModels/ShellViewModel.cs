@@ -20,6 +20,8 @@ namespace LogSearcher.ViewModels
             InputExtension = "";
             InputSearchString = "";
 
+            SearchStatus = "Found Files:";
+
             GoSearch = new RelayCommand(StartSearch);
         }
 
@@ -66,6 +68,16 @@ namespace LogSearcher.ViewModels
 
 
         #region View-property bindings 
+
+        private string searchStatus;
+
+        public string SearchStatus
+        {
+            get { return searchStatus; }
+            set { searchStatus = value; NotifyOfPropertyChange(() => SearchStatus); }
+        }
+
+
         private string inputSearchString;
         public string InputSearchString
         {
@@ -162,8 +174,10 @@ namespace LogSearcher.ViewModels
 
         public async void StartSearch()
         {
+            SearchStatus = "Searching...";
             HitList.Clear();
             await SearchForFiles();
+            SearchStatus = "Found Files:";
         }
 
         public void OpenFile()
