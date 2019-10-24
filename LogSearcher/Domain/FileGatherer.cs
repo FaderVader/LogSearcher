@@ -37,7 +37,7 @@ namespace LogSearcher.Domain
         }
 
         
-        public void TraverseSourceDirs()
+        public async Task TraverseSourceDirs()
         {
             foreach (var directory in SourceDirectories)
             {
@@ -49,7 +49,7 @@ namespace LogSearcher.Domain
                 directory.FoundFileList.Clear(); // ensure list is cleared before populating
 
                 FindInFile findFile = new FindInFile(searchProfile);
-                findFile.SearchInList(list);          
+                await findFile.SearchInList(list);          
                 directory.FoundFileList = findFile.HitList;
             }
         }

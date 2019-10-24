@@ -180,11 +180,11 @@ namespace LogSearcher.ViewModels
 
 
         #region Methods
-        public void SearchForFiles()
+        public async void SearchForFiles()
         {
             SearchProfile profile = new SearchProfile(InputSearchString, InputExtension);
             FileGatherer gatherer = new FileGatherer(SourceDirectories, profile);
-            gatherer.TraverseSourceDirs();
+            await gatherer.TraverseSourceDirs();
             var result = gatherer.GetFoundFiles();
 
             BindableCollection<HitFile> localHits = new BindableCollection<HitFile>();

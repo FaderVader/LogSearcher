@@ -27,21 +27,33 @@ namespace LogSearcher.Domain
             HitList = new List<HitFile>();
         }
 
-        public void SearchInList(List<string> list)
+        public async Task SearchInList(List<string> list)
         {
             foreach (var file in list)
             {
                 try
                 {
-                    var fileContent = File.ReadAllText(file);
-
-                    if (fileContent.Contains(searchProfile.SearchString))
+                    using (var reader = File.OpenText(file))
                     {
-                        // also locate the line and col of first occurence?                       
-                        var hit = new HitFile(file);
-                        hit.SearchPosition = FindLine(fileContent);
-                        HitList.Add(hit);
+                        var fileContent = await reader.ReadToEndAsync();
+
+                        if (fileContent.Contains(searchProfile.SearchString))
+                        {
+                            // also locate the line and col of first occurence?                       
+                            var hit = new HitFile(file);
+                            hit.SearchPosition = await FindLine(fileContent);
+                            HitList.Add(hit);
+                        }
                     }
+                    //var fileContent = File.ReadAllText(file);
+
+                    //if (fileContent.Contains(searchProfile.SearchString))
+                    //{
+                    //    // also locate the line and col of first occurence?                       
+                    //    var hit = new HitFile(file);
+                    //    hit.SearchPosition = FindLine(fileContent);
+                    //    HitList.Add(hit);
+                    //}
                 }
                 catch (Exception e)
                 {
@@ -50,7 +62,7 @@ namespace LogSearcher.Domain
             }
         }
 
-        private TextPosition FindLine(string file)
+        private async Task<TextPosition> FindLine(string file)
         {
             // in log-files, each line ends with [cr-lf]
             // split into array @ cr-lf
