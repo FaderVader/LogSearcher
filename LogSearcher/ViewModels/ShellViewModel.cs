@@ -19,6 +19,8 @@ namespace LogSearcher.ViewModels
 
             InputExtension = "";
             InputSearchString = "";
+
+            GoSearch = new RelayCommand(SearchForFiles);
         }
 
         /* 
@@ -27,6 +29,8 @@ namespace LogSearcher.ViewModels
          button-click-handler invokes same method, but we decide which delegate to use based on UI-checkbox
              */
 
+
+        public RelayCommand GoSearch { get; }
 
         #region Main lists
 
@@ -180,6 +184,7 @@ namespace LogSearcher.ViewModels
         {
             SearchProfile profile = new SearchProfile(InputSearchString, InputExtension);
             FileGatherer gatherer = new FileGatherer(SourceDirectories, profile);
+            gatherer.TraverseSourceDirs();
             var result = gatherer.GetFoundFiles();
 
             BindableCollection<HitFile> localHits = new BindableCollection<HitFile>();

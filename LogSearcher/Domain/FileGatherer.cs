@@ -16,7 +16,7 @@ namespace LogSearcher.Domain
             this.sourceDirectories = sourceDirectories;
             this.searchProfile = search;
 
-            TraverseSourceDirs();
+            //TraverseSourceDirs();
 
             var test = sourceDirectories;
         }

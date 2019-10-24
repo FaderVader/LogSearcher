@@ -116,11 +116,13 @@
                 Margin="5 10 10 0">Set</Button>
 
         <!-- Row 9 -->
-        <Button x:Name="StartSearch" 
+        <!-- <Button x:Name="StartSearch" -->
+        <Button x:Name="Search" 
                 Grid.Row="9" 
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Background="Green"
+                Command="{Binding GoSearch}"
                 Margin="0 20 0 20">SEARCH</Button>
 
         <Button x:Name="OpenFile" 
