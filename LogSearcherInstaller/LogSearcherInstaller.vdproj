@@ -232,12 +232,6 @@
         "Entry"
         {
         "MsmKey" = "8:_3FDE70FB5FDDD1A1E868D88FEE23FE71"
-        "OwnerKey" = "8:_E0E8228524FF3B737A6DD2B4A5A0E3D8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3FDE70FB5FDDD1A1E868D88FEE23FE71"
         "OwnerKey" = "8:_C0B7F7CD5A781C7D933CD593F23F4B3B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -245,6 +239,12 @@
         {
         "MsmKey" = "8:_3FDE70FB5FDDD1A1E868D88FEE23FE71"
         "OwnerKey" = "8:_5F481A18C64848E1B957149D80E05467"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3FDE70FB5FDDD1A1E868D88FEE23FE71"
+        "OwnerKey" = "8:_E0E8228524FF3B737A6DD2B4A5A0E3D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -869,12 +869,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5F481A18C64848E1B957149D80E05467"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3E3B47361AC5D3967701910C90368B65"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1546,6 +1540,18 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DE9AD8CB58068006E46A8C8EAB12D048"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3E3B47361AC5D3967701910C90368B65"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D4C1DBAE6F2A5228550D2A85E2F2CCDD"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1615,12 +1621,6 @@
         "OwnerKey" = "8:_180E113DCAE80A77081DE29EAAAED7FD"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DE9AD8CB58068006E46A8C8EAB12D048"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -1639,6 +1639,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -1655,6 +1663,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -5678,7 +5702,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LogSearcher"
         "ProductCode" = "8:{E79B835F-0728-404A-9B18-2408C3EA745C}"
-        "PackageCode" = "8:{29B69CD9-277D-4A28-93B8-FFCBE14005AB}"
+        "PackageCode" = "8:{7FB9D8A2-0D9E-4F68-B58D-86C78CAE3325}"
         "UpgradeCode" = "8:{72C00071-7A15-4DE9-A3F1-9DD93DD61C88}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -5798,6 +5822,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6CEED5055BD9483AB59ECEB6266E15D2"
+            {
+            "Name" = "8:LogSearcher"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_5F481A18C64848E1B957149D80E05467"
+            "Folder" = "8:_8B9CA1A77AB2432197B31E6960BD00EF"
+            "WorkingFolder" = "8:_F811D339B934466EB18C0C9871A383F1"
+            "Icon" = "8:_5F481A18C64848E1B957149D80E05467"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -6199,7 +6237,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5F481A18C64848E1B957149D80E05467"
             {
-            "SourcePath" = "8:..\\LogSearcher\\obj\\Debug\\LogSearcher.exe"
+            "SourcePath" = "8:..\\LogSearcher\\obj\\Release\\LogSearcher.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F811D339B934466EB18C0C9871A383F1"
