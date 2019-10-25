@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LogSearcher.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="800" FontSize="12"
+      d:DesignHeight="375" d:DesignWidth="800" FontSize="12"
       Background="Gray"
       WindowTitle="LogSearcher"  
       >
@@ -95,10 +95,10 @@
 
         <!-- Row 6 -->
         <Button x:Name="ResetSourceFolderDisplay" Grid.Row="6" Grid.Column="4"
-                Margin="0 5 10 10"
+                Margin="0 10 10 10"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Right"
-                
+                MaxHeight="20"
                 >Reset</Button>
 
         <!-- Row 7 -->
@@ -126,15 +126,9 @@
                 Command="{Binding GoSearch}"
                 Margin="0 20 0 20">SEARCH</Button>
 
-        <Button x:Name="OpenFile" 
-                Margin="0 20 10 20 "
-                MaxWidth="70"
-                HorizontalAlignment="Left"
-                Grid.Column="6" 
-                Grid.Row="9">Open File</Button>
+
 
         <!-- Found files-->
-        <!--Found Files:-->
         <TextBlock Grid.Row="1" 
                    Grid.Column="6"
                    Text="{Binding SearchStatus}"></TextBlock>
@@ -146,7 +140,7 @@
                   Margin="0 0 10 0"
                   VerticalAlignment="Top"
                   MinWidth="180"
-                  MaxHeight="230"
+                  MaxHeight="215"
                   MinHeight="200"
                   
                   DisplayMemberPath="FileName"                                  
@@ -154,7 +148,23 @@
                   />
         <TextBox x:Name="FileContent" Grid.Row="7" Grid.Column="6"
                  Grid.ColumnSpan="2"                    
-                 Margin="0 10 10 0"></TextBox>       
+                 Margin="0 10 10 0"></TextBox>    
+        
+        <!--Use Notepad++ ?-->
+        <StackPanel Grid.Row="6" Grid.Column="6"    
+                    Orientation="Horizontal"
+                    Margin="0 0 0 0">
+            <Button x:Name="OpenFile" 
+                Margin="0 20 20 20 "
+                MaxWidth="70"
+                HorizontalAlignment="Left"
+                >Open File</Button>
+            <TextBlock Margin="0 23 5 0">
+            Use Notepad++:
+            </TextBlock>
+            <CheckBox x:Name="SelectUseNPP"
+                      Margin="0 23 5 0"></CheckBox>
+        </StackPanel>
     </Grid>
 
 

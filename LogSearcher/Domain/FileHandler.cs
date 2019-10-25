@@ -45,8 +45,8 @@ namespace LogSearcher.Domain
             }
             catch (Exception)
             {
-                // do nothing - just ignore and return
-                return;
+                // fallback to default application for file.
+                OpenWithFile(hitfile);
             }
 
         }

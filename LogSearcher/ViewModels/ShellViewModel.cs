@@ -15,18 +15,12 @@ namespace LogSearcher.ViewModels
 
             InputExtension = "";
             InputSearchString = "";
+            SearchStatus = ""; // Found Files:
 
-            SearchStatus = "Found Files:";
-
+            SelectUseNPP = Properties.Settings.Default.UseNPP; // UI reflects config-setting
             GoSearch = new RelayCommand(StartSearch);
         }
-
-        /* 
-         Toggle for open file with Notepad++ via UI-checkbox: Use NPP
-         Create two classes : 1 for just open default, 1 for invoking npp with args
-         button-click-handler invokes same method, but we decide which delegate to use based on UI-checkbox
-             */
-
+                
 
         public RelayCommand GoSearch { get; }
 
@@ -65,8 +59,16 @@ namespace LogSearcher.ViewModels
 
         #region View-property bindings 
 
-        private string searchStatus;
+        private bool selectUseNPP;
 
+        public bool SelectUseNPP
+        {
+            get { return selectUseNPP; }
+            set { selectUseNPP = value; NotifyOfPropertyChange(() => SelectUseNPP); }
+        }
+
+
+        private string searchStatus;
         public string SearchStatus
         {
             get { return searchStatus; }
@@ -178,7 +180,7 @@ namespace LogSearcher.ViewModels
 
         public void OpenFile()
         {
-            var useNPP = Properties.Settings.Default.UseNPP;
+            var useNPP = SelectUseNPP;    //Properties.Settings.Default.UseNPP;
             if (useNPP)
             {
                 FileHandler.SendToNotePadPP(SelectedFile);
